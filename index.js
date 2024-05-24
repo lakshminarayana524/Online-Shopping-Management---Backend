@@ -16,7 +16,7 @@ const app=express();
 
 app.use(express.json());
 app.use(cors({
-    origin:"http://localhost:3000",
+    origin:"https://my-online-shopping-app.vercel.app/",
     method:["GET","POST","UPDATE","DELETE"],
     credentials:true,
 }))
@@ -191,7 +191,9 @@ app.delete("/delete-prod/:id",async(req,res)=>{
     }
 })
 
+PORT=process.env.PORT;
 
-app.listen(3001,()=>{
+
+app.listen(PORT||3001,()=>{
     console.log("server is running")
 })
