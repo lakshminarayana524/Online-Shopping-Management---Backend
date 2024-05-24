@@ -196,9 +196,9 @@ app.delete("/delete-prod/:id",async(req,res)=>{
     }
 })
 
-PORT=process.env.PORT;
+PORT=process.env.PORT||3001;
 
 
-app.listen(PORT||3001,()=>{
+app.listen(PORT,()=>{
     console.log("server is running")
 })
