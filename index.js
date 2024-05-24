@@ -16,10 +16,11 @@ const app=express();
 
 app.use(express.json());
 app.use(cors({
-    origin:"https://my-online-shopping-app.vercel.app/",
-    method:["GET","POST","UPDATE","DELETE"],
-    credentials:true,
-}))
+    origin: "https://my-online-shopping-app.vercel.app",
+    methods: ["GET", "POST", "UPDATE", "DELETE"],
+    credentials: true,
+}));
+
 app.use(cookie());
 
 mongoose.connect(process.env.MONGO_URL)
