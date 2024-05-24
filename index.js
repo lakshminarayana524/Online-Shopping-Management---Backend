@@ -25,6 +25,10 @@ app.use(cookie());
 mongoose.connect(process.env.MONGO_URL)
 
 
+app.get('/', (req, res) => {
+    res.json({message:"hello world"})
+  })
+
 const verifyuser = (req, res, next) => {
     const token = req.cookies.token;
     if (!token) {
