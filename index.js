@@ -67,7 +67,7 @@ app.post('/login',(req,res)=>{
         if(user){
             bcrypt.compare(password,user.password,(err,result)=>{
                 if(result){
-                    const token =jwt.sign({userId:user._id},process.env.SECRET_KEY,{expiresIn:'1h'});
+                    const token =jwt.sign({userId:user._id},process.env.SECRET_KEY,{expiresIn:'1h'});   
                     res.cookie("token",token,{httpOnly: true, secure: true, sameSite: 'none'});
                     res.json({msg:"Login Successfull"})
                 }else{
