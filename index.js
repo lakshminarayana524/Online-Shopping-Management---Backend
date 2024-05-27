@@ -199,7 +199,7 @@ app.delete("/delete-prod/:id",async(req,res)=>{
     }
 })
 
-PORT= 3001 || process.env.POST;
+PORT=  process.env.POST || 3001 ;
 
 
 app.listen(PORT,()=>{
