@@ -36,9 +36,11 @@ const cartSchema=new mongoose.Schema({
     product_id:String,
     User_id:String,
     product_quantity:String,
+    product_color:String,
     product_price:String,
     orderedDate:{type:Date,default :()=>DateTime.now().setZone('Asia/Kolkata').toJSDate()}
 })
+
 
 const Cart=mongoose.model("Cart",cartSchema)
 

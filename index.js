@@ -10,7 +10,7 @@ const multer=require('multer')
 const path=require('path')
 const nodemailer=require('nodemailer')
 const fs= require('fs')
-const {User,Product}=require("./models/dbdetails")
+const {User,Product,Cart}=require("./models/dbdetails")
 const cloud=require('./models/cloudinary')
 const app=express();
 
@@ -38,7 +38,7 @@ const verifyuser = (req, res, next) => {
         jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
             if (err) {
                 console.log("Wrong Token");
-                return res.json({ msg: "Wrong Token" });
+                    return res.json({ msg: "Wrong Token" });
             }
 
             req.userId = decoded.userId;
@@ -155,6 +155,9 @@ app.post('/addProducts', upload.single('image'),async(req,res)=>{
     }
 } )
 
+app.post("/addToCart",async(req,res)=>{
+
+})
 
 app.get('/getproducts',async(req,res)=>{
     try{
@@ -175,10 +178,10 @@ app.get("/getprod/:id",async(req,res)=> {
         }
 
         return res.status(200).json({
-            msg : "Data Fecthed  successfully!", 
+            msg : "Data Fecthed Successfully!", 
             product
         })
-    }catch(error){
+    }catch(error){  
         console.error("Error retrieving ",error)
         res.status(500).json({msg:"Internal Server Error"})
     }
@@ -196,9 +199,9 @@ app.delete("/delete-prod/:id",async(req,res)=>{
     }
 })
 
-PORT=process.env.PORT||3001;
+PORT= 3001 || process.env.POST;
 
 
 app.listen(PORT,()=>{
-    console.log("server is running")
+    console.log("server is running",PORT)
 })
